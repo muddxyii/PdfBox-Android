@@ -96,7 +96,10 @@ dependencies {
     api "org.bouncycastle:bcpkix-jdk15to18:1.73"
     api "org.bouncycastle:bcutil-jdk15to18:1.73"
     // for jpeg2000 decode/encode
-    compileOnly 'com.gemalto.jp2:jp2-android:1.0.3'
+    // TODO: JPX/JPEG-2000 support removed due to dependency unavailability  
+    // See issue #1 for reimplementation: https://github.com/muddxyii/PdfBox-Android/issues/1
+    // Original dependency: com.gemalto.jp2:jp2-android:1.0.3 (JCenter shutdown)
+    // compileOnly 'com.gemalto.jp2:jp2-android:1.0.3'
 
     // Test dependencies
     testImplementation 'junit:junit:4.13.2'

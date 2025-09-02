@@ -38,5 +38,8 @@ dependencies {
     // Optional dependencies
 
     // Read JPX images
-    implementation 'com.gemalto.jp2:jp2-android:1.0.3'
+    // TODO: JPX/JPEG-2000 support removed due to dependency unavailability
+    // See issue #1 for reimplementation: https://github.com/muddxyii/PdfBox-Android/issues/1
+    // Original dependency: com.gemalto.jp2:jp2-android:1.0.3 (JCenter shutdown)
+    // implementation 'com.gemalto.jp2:jp2-android:1.0.3'
 }
