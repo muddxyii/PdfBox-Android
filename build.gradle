@@ -5,7 +5,8 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        jcenter() // jp2-android
+        // TODO: JCenter removed - jp2-android dependency unavailable after JCenter shutdown
+        // jcenter() // jp2-android
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
@@ -20,7 +21,8 @@ allprojects {
 //        maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
         mavenCentral()
         google()
-        jcenter()
+        // TODO: JCenter removed - jp2-android dependency unavailable after JCenter shutdown  
+        // jcenter()
     }
 
 //    Show more warnings if desired

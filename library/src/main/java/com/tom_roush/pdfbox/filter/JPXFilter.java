@@ -26,8 +26,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import com.gemalto.jp2.JP2Decoder;
-import com.gemalto.jp2.JP2Encoder;
+// TODO: JPX/JPEG-2000 support removed due to dependency unavailability
+// See issue #1 for reimplementation: https://github.com/muddxyii/PdfBox-Android/issues/1
+// Original dependency: com.gemalto.jp2:jp2-android:1.0.3 (JCenter shutdown)
+// import com.gemalto.jp2.JP2Decoder;
+// import com.gemalto.jp2.JP2Encoder;
 import com.tom_roush.pdfbox.cos.COSDictionary;
 import com.tom_roush.pdfbox.cos.COSName;
 import com.tom_roush.pdfbox.io.IOUtils;
@@ -37,8 +40,10 @@ import com.tom_roush.pdfbox.pdmodel.graphics.color.PDJPXColorSpace;
  * Decompress data encoded using the wavelet-based JPEG 2000 standard,
  * reproducing the original data.
  *
- * Requires the JP2ForAndroid library to be available from com.gemalto.jp2:jp2-android:1.0.3, see
- * <a href="https://github.com/ThalesGroup/JP2ForAndroid">JP2ForAndroid</a>.
+ * NOTE: JPX/JPEG-2000 support temporarily removed due to dependency unavailability.
+ * The required JP2ForAndroid library (com.gemalto.jp2:jp2-android:1.0.3) is no longer
+ * available after JCenter shutdown. See issue #1 for reimplementation plans:
+ * https://github.com/muddxyii/PdfBox-Android/issues/1
  *
  * @author John Hewson
  * @author Timo Boehme
@@ -90,9 +95,19 @@ public final class JPXFilter extends Filter
         return decode(encoded, decoded, parameters, index, DecodeOptions.DEFAULT);
     }
 
-    // try to read using JP2ForAndroid
+    // JPX/JPEG-2000 decoding - graceful degradation
     private Bitmap readJPX(InputStream input, DecodeOptions options, DecodeResult result) throws IOException
     {
+        // TODO: JPX/JPEG-2000 support removed due to dependency unavailability
+        // See issue #1 for reimplementation: https://github.com/muddxyii/PdfBox-Android/issues/1
+        // Original dependency: com.gemalto.jp2:jp2-android:1.0.3 (JCenter shutdown)
+        throw new MissingImageReaderException(
+            "JPX/JPEG-2000 image support is temporarily unavailable. " +
+            "The required JP2ForAndroid library is no longer accessible after JCenter shutdown. " +
+            "See https://github.com/muddxyii/PdfBox-Android/issues/1 for reimplementation progress.");
+
+        // Original implementation preserved for reference:
+        /*
         try
         {
             Class.forName("com.gemalto.jp2.JP2Decoder");
@@ -108,7 +123,9 @@ public final class JPXFilter extends Filter
         // decoder.setSourceRegion(options.getSourceRegion());
 
         Bitmap image = decoder.decode();
+        */
 
+        /*
         COSDictionary parameters = result.getParameters();
 
         // "If the image stream uses the JPXDecode filter, this entry is optional
@@ -135,6 +152,7 @@ public final class JPXFilter extends Filter
         }
 
         return image;
+        */
     }
 
     /**
@@ -144,9 +162,20 @@ public final class JPXFilter extends Filter
     protected void encode(InputStream input, OutputStream encoded, COSDictionary parameters)
         throws IOException
     {
+        // TODO: JPX/JPEG-2000 support removed due to dependency unavailability
+        // See issue #1 for reimplementation: https://github.com/muddxyii/PdfBox-Android/issues/1
+        // Original dependency: com.gemalto.jp2:jp2-android:1.0.3 (JCenter shutdown)
+        throw new IOException(
+            "JPX/JPEG-2000 image encoding is temporarily unavailable. " +
+            "The required JP2ForAndroid library is no longer accessible after JCenter shutdown. " +
+            "See https://github.com/muddxyii/PdfBox-Android/issues/1 for reimplementation progress.");
+            
+        // Original implementation preserved for reference:
+        /*
         Bitmap bitmap = BitmapFactory.decodeStream(input);
         byte[] jpeBytes = new JP2Encoder(bitmap).encode();
         IOUtils.copy(new ByteArrayInputStream(jpeBytes), encoded);
         encoded.flush();
+        */
     }
 }
