@@ -1,9 +1,21 @@
-PdfBox-Android
+PdfBox-Android (Maintained Fork)
 ==============
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.tom-roush/pdfbox-android/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.tom-roush/pdfbox-android/)
-[![Build Status](https://github.com/TomRoush/PdfBox-Android/actions/workflows/android-ci.yml/badge.svg?branch=master)](https://github.com/TomRoush/PdfBox-Android/actions)
+<!-- TODO: Update badges to point to this fork -->
+<!-- [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.tom-roush/pdfbox-android/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.tom-roush/pdfbox-android/) -->
+<!-- [![Build Status](https://github.com/TomRoush/PdfBox-Android/actions/workflows/android-ci.yml/badge.svg?branch=master)](https://github.com/TomRoush/PdfBox-Android/actions) -->
 
-A port of Apache's PdfBox library to be usable on Android. Most features should be implemented by now. Feature requests can be added to the issue tracker. Stable releases can be added as a Gradle dependency from Maven Central.
+This is a maintained fork of [TomRoush/PdfBox-Android](https://github.com/TomRoush/PdfBox-Android), which is a port of Apache's PdfBox library to be usable on Android. The original project has not received updates in over 2 years, so I've taken on maintenance to keep dependencies up to date.
+
+## Purpose and Maintenance Focus
+
+I maintain this fork primarily for form filling functionality in mobile applications. My focus areas are:
+
+- **Dependency updates**: Keeping BouncyCastle and other dependencies current
+- **Java version compatibility**: Supporting latest Android/Java versions  
+- **Form filling features**: Maintaining and improving PDF form manipulation capabilities
+- **Basic maintenance**: Bug fixes and compatibility updates
+
+**Note**: I may not actively monitor or implement other PDF features beyond form filling. Pull requests for additional features are welcome, but my primary focus remains on dependency maintenance and form-related functionality.
 
 The main code of this project is licensed under the Apache 2.0 License, found at http://www.apache.org/licenses/LICENSE-2.0.html
 
