@@ -48,11 +48,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import difflib.ChangeDelta;
-import difflib.DeleteDelta;
-import difflib.DiffUtils;
-import difflib.InsertDelta;
-import difflib.Patch;
+import com.github.difflib.patch.ChangeDelta;
+import com.github.difflib.patch.DeleteDelta;
+import com.github.difflib.DiffUtils;
+import com.github.difflib.patch.InsertDelta;
+import com.github.difflib.patch.Patch;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -380,22 +380,22 @@ public class TestTextStripper
                 if (delta instanceof ChangeDelta)
                 {
                     ChangeDelta<String> cdelta = (ChangeDelta<String>) delta;
-                    diffPS.println("Org: " + cdelta.getOriginal());
-                    diffPS.println("New: " + cdelta.getRevised());
+                    diffPS.println("Org: " + cdelta.getSource().getLines());
+                    diffPS.println("New: " + cdelta.getTarget().getLines());
                     diffPS.println();
                 }
                 else if (delta instanceof DeleteDelta)
                 {
                     DeleteDelta<String> ddelta = (DeleteDelta<String>) delta;
-                    diffPS.println("Org: " + ddelta.getOriginal());
-                    diffPS.println("New: " + ddelta.getRevised());
+                    diffPS.println("Org: " + ddelta.getSource().getLines());
+                    diffPS.println("New: " + ddelta.getTarget().getLines());
                     diffPS.println();
                 }
                 else if (delta instanceof InsertDelta)
                 {
                     InsertDelta<String> idelta = (InsertDelta<String>) delta;
-                    diffPS.println("Org: " + idelta.getOriginal());
-                    diffPS.println("New: " + idelta.getRevised());
+                    diffPS.println("Org: " + idelta.getSource().getLines());
+                    diffPS.println("New: " + idelta.getTarget().getLines());
                     diffPS.println();
                 }
                 else
