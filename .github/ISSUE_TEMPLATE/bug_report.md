@@ -1,32 +1,33 @@
 ---
-name: Bug report
-about: Report a problem
+name: Bug Report
+about: Report a bug!
 title: ''
-labels: 'type: bug'
+labels: bug
 assignees: ''
-
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## PdfBox-Android version
 
-**To reproduce**
-Code snippet to reproduce the behavior:
-```
-System.out.println("Hello world");
-```
-**PDF example**
-Link or attach a PDF demonstrating the issue
+The release number and build code of the version you're using.
+  
+## What you did
+  
+Describe how you arrived at the problem. If you can, consider providing a code snippet or link.
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## What went wrong
 
-**Actual behavior**
-A clear and concise description of what happened instead.
+If it's not clear, break this out into:
 
-**Environment details:**
- - PdfBox-Android version: [e.g. 2.0.27.0]
- - Android API version: [e.g. API 33]
+- what were you expecting?
+- what actually happened?
 
-**Additional context**
-Add any other context about the problem here.
+## Additional information
+
+Other information that can be used to further reproduce or isolate the problem.
+This commonly includes:
+
+- screenshots
+- logs
+- theories about what might be going wrong
+- workarounds that you used
+- links to related bugs, PRs or discussions

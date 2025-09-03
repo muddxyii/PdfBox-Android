@@ -1,22 +1,23 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Feature Request
+about: Propose a new feature!
 title: ''
-labels: 'type: enhancement'
+labels: enhancement
 assignees: ''
-
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is.
+## What problem does this solve or what need does it fill?
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+A description of why this particular feature should be added.
 
-**Check the type of feature request:**
-- [ ] Feature available in a newer PDFBox desktop version
-- [ ] Feature not yet ported to PdfBox-Android
-- [ ] Other
+## What solution would you like?
 
-**Additional context**
-Add any other context or screenshots about the feature request here.
+The solution you propose for the problem presented.
+
+## What alternative(s) have you considered?
+
+Other solutions to solve and/or work around the problem presented.
+
+## Additional context
+
+Any other information you would like to add such as related previous work.
