@@ -9,13 +9,13 @@ ext {
 }
 
 android {
-    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    compileSdk = Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
     compileOptions.encoding = 'UTF-8'
 
     defaultConfig {
         testInstrumentationRunnerArguments notAnnotation: 'androidx.test.filters.FlakyTest'
-        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
-        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        minSdk = Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdk = Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-proguard-rules.txt'
     }
@@ -40,17 +40,17 @@ android {
         }
     }
     lint {
-        abortOnError false
+        abortOnError = false
     }
-    namespace 'com.tom_roush.pdfbox'
+    namespace = 'com.tom_roush.pdfbox'
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     // Rename the output aars
-    android.libraryVariants.all { variant ->
+    android.libraryVariants.configureEach { variant ->
         variant.outputs.all { output ->
             if (outputFileName.endsWith('.aar')) {
                 outputFileName = "pdfbox-android-${variant.name}-${defaultConfig.versionName}.aar"
@@ -63,30 +63,30 @@ android {
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 
-tasks.withType(Test) {
+tasks.withType(Test).configureEach {
     // Performance improvements for tests
     maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
-    reports.html.enabled = false
-    reports.junitXml.enabled = false
+    reports.html.required = false
+    reports.junitXml.required = false
 
     testLogging {
         // set options for log level LIFECYCLE
         events TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED, TestLogEvent.STANDARD_OUT, TestLogEvent.STANDARD_ERROR
-        showExceptions true
-        exceptionFormat TestExceptionFormat.FULL
-        showCauses true
-        showStackTraces true
+        showExceptions = true
+        exceptionFormat = TestExceptionFormat.FULL
+        showCauses = true
+        showStackTraces = true
 
         info.events = debug.events
         info.exceptionFormat = debug.exceptionFormat
+    }
 
-        afterSuite { desc, result ->
-            if (!desc.parent) { // will match the outermost suite
-                def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
-                def startItem = '|  ', endItem = '  |'
-                def repeatLength = startItem.length() + output.length() + endItem.length()
-                println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
-            }
+    afterSuite { desc, result ->
+        if (!desc.parent) { // will match the outermost suite
+            def output = "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+            def startItem = '|  ', endItem = '  |'
+            def repeatLength = startItem.length() + output.length() + endItem.length()
+            println('\n' + ('-' * repeatLength) + '\n' + startItem + output + endItem + '\n' + ('-' * repeatLength))
         }
     }
 }
