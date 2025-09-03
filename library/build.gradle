@@ -9,13 +9,13 @@ ext {
 }
 
 android {
-    compileSdk Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    compileSdk = Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
     compileOptions.encoding = 'UTF-8'
 
     defaultConfig {
         testInstrumentationRunnerArguments notAnnotation: 'androidx.test.filters.FlakyTest'
-        minSdk Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
-        targetSdk Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        minSdk = Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+        targetSdk = Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-proguard-rules.txt'
     }
@@ -40,9 +40,9 @@ android {
         }
     }
     lint {
-        abortOnError false
+        abortOnError = false
     }
-    namespace 'com.tom_roush.pdfbox'
+    namespace = 'com.tom_roush.pdfbox'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -72,10 +72,10 @@ tasks.withType(Test) {
     testLogging {
         // set options for log level LIFECYCLE
         events TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED, TestLogEvent.STANDARD_OUT, TestLogEvent.STANDARD_ERROR
-        showExceptions true
-        exceptionFormat TestExceptionFormat.FULL
-        showCauses true
-        showStackTraces true
+        showExceptions = true
+        exceptionFormat = TestExceptionFormat.FULL
+        showCauses = true
+        showStackTraces = true
 
         info.events = debug.events
         info.exceptionFormat = debug.exceptionFormat

@@ -4,7 +4,7 @@ apply plugin: 'signing'
 ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 
 task androidJavadocs(type: Javadoc) {
-    failOnError false
+    failOnError = false
     source = android.sourceSets.main.java.sourceFiles
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 
@@ -25,10 +25,8 @@ task androidJavadocs(type: Javadoc) {
     exclude '**/R.java'
 }
 
-afterEvaluate {
-    androidJavadocs.classpath += files(android.libraryVariants.collect { variant ->
-        variant.javaCompileProvider.get().classpath.files
-    })
+android.libraryVariants.all { variant ->
+    androidJavadocs.classpath += variant.javaCompileProvider.get().classpath
 }
 
 task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
@@ -84,9 +82,9 @@ project.afterEvaluate {
                 artifact androidJavadocsJar
                 artifact androidSourcesJar
 
-                groupId project.PUBLISH_GROUP_ID
-                artifactId project.PUBLISH_ARTIFACT_ID
-                version project.PUBLISH_VERSION
+                groupId = project.PUBLISH_GROUP_ID
+                artifactId = project.PUBLISH_ARTIFACT_ID
+                version = project.PUBLISH_VERSION
 
                 pom.withXml {
                     def root = asNode()
